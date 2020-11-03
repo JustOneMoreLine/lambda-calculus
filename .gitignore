@@ -1,3 +1,4 @@
 *.el
 .stack-work
 dist
+stack.yaml.lock
