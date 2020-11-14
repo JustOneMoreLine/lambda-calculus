@@ -1,7 +1,7 @@
 # Modified Lambda Calculus
 
 This project is a modified application that base from lambda calculus originally made by [@sgillespie](https://github.com/sgillespie).
-This modified lambda calculus is made for in hopes to fulfill a required task in my Functional Programming course.
+This modified lambda calculus is made to fulfill a required task in my Functional Programming course.
 
 # Introduction to Lambda Calculus
 
@@ -17,12 +17,9 @@ It will use Church's Numerals to represent integers.
 
 1. Have GHC >= 8 and stack installed
 2. run
-
-    stack build
-    
-3. run 
-
-    stack install
+	stack build
+3. run
+	stack install
 
 
 ## How to use
@@ -36,9 +33,9 @@ A prompt would show up and you can start typing. Some examples:
     λ > \x. x
     λx. x
     λ > \x y. x y
-    λx. xy
+    λx y. x y
 
-To use integers and arithmetic operation as inputs, you need to use them between parenthesis.
+To use integers or arithmetic operation as inputs, you need to use them between parenthesis.
 This feature supports positive integers only.
 
     λ > (2)
@@ -71,12 +68,13 @@ In the original lambda calculus, it uses 4 data type to represent lambda express
     | Let name (LambdaExpr name)
     deriving (Eq, Show)
 
+
 So to support integers and arithmetic operation as inputs, I add some modification in the parsing logic
 to accept those inputs and interpreted them into lambda expression.
 
-Since I planned to use parenthesis to mark integers or operations inputs and lambda calculus' parser uses Parsec, a monadic
-haskell parser, I add extra parsing options in the parenthesis parser to accept numbers (cnumber) or arithemetic
-operations (operator).
+Since I planned to use parenthesis to mark integers or operations inputs and lambda calculus' parser uses Parsec,
+a monadic haskell parser, I add extra parsing options in the parenthesis parser to accept numbers (cnumber) or
+arithemetic operations (operator).
 
 ### [Parser.hs](src/Language/Lambda/Parser.hs)
 
