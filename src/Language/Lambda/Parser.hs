@@ -26,8 +26,8 @@ term = let' <|> abs <|> var <|> parens
 -- Adding extra parse for church numbers abstraction
 cnumber :: Parser (LambdaExpr String)
 cnumber = do
-	num <- digit
-	return(numAbs (read [num] :: Integer))
+	num <- many1 digit
+	return(numAbs (read num :: Integer))
 
 -- generate church numerals
 numAbs 0 = Abs "s" (Abs "z" (Var "z"))
