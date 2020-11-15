@@ -72,8 +72,8 @@ In the original lambda calculus, it uses 4 data type to represent lambda express
 So to support integers and arithmetic operation as inputs, I add some modification in the parsing logic
 to accept those inputs and interpreted them into lambda expression.
 
-Since I planned to use parenthesis to mark integers or operations inputs and lambda calculus' parser uses Parsec,
-a monadic haskell parser, I add extra parsing options in the parenthesis parser to accept numbers (cnumber) or
+Since I planned to use parenthesis to mark integers or operations inputs, and the original lambda calculus' parser uses Parsec,
+a monadic haskell parser, I added extra parsing options in the parenthesis parser to accept numbers (cnumber) or
 arithemetic operations (operator).
 
 ### [Parser.hs](src/Language/Lambda/Parser.hs)
@@ -116,3 +116,7 @@ from the function numAbs.
     -- generate operation abstraction
     opAbs '+' = Abs "w" (Abs "y" (Abs "x" (App (Var "y") (App (App (Var "w") (Var "y")) (Var "x")))))
     opAbs '*' = Abs "x" (Abs "y" (Abs "z" (App (Var "x") (App (Var "y") (Var "z")))))
+    
+ By parsing integers and/or arithmetic operations to lambda expression immediately, the original
+ lambda calculus can interpreted them like normal lambda expression without even knowing about integers
+ and/or arithmetic operations.
